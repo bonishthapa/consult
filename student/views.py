@@ -10,7 +10,7 @@ from rest_framework.response import Response
 
 class StudentAPIView(viewsets.ModelViewSet):
     queryset = Student.objects.all()
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     serializer_class = StudentSerializer
     
     # def perform_create(self, serializer):
