@@ -17,5 +17,8 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('api/logout/blacklist/', views.BlacklistTokenUpdateView.as_view(),name='blacklist'),
+    path('api/logout/', views.LogoutAPIView.as_view(),name="logout"),
+    # path('api/login/', views.ObtainTokenPairWithUsernameView.as_view(), name='login'),
+    path('api/user/details/', views.UserDetails.as_view(), name='userdetails'),
     path('api/',include(router.urls)),
 ]
