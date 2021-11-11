@@ -1,5 +1,7 @@
+from django.db.models import query
 from django.shortcuts import render
 from rest_framework import viewsets
+from student import serializers
 from student.models import Student
 from student.serializers import StudentSerializer
 from rest_framework.permissions import IsAuthenticated,AllowAny
@@ -33,25 +35,29 @@ class StudentAPIView(viewsets.ModelViewSet):
 
         return queryset
 
-    # def get_serializer_context(self):
-    #     context = super(StudentAPIView, self).get_serializer_context()
+    #Add extra context in response
+    # def list(self, request, *args, **kwargs):
+    #     response = super().list(request, args, kwargs)
     #     visa_granted = self.get_queryset().filter(status="Visa Granted").count()
     #     offer_pending = self.get_queryset().filter(status="Offer Pending").count()
     #     visa_pending = self.get_queryset().filter(status="Visa Pending").count()
-    #     context.update({
-    #         'visa_granted': visa_granted,
-    #         'offer_pending':offer_pending,
-    #         'visa_pending':visa_pending
-    #         })
-    #     print("context",context)
-    #     return context
+    #     response.data['visa_granted'] = visa_granted
+    #     response.data['offer_pending'] = offer_pending
+    #     response.data['visa_pending'] = visa_pending
+    #     return response
 
-    def list(self, request, *args, **kwargs):
-        response = super().list(request, args, kwargs)
-        visa_granted = self.get_queryset().filter(status="Visa Granted").count()
-        offer_pending = self.get_queryset().filter(status="Offer Pending").count()
-        visa_pending = self.get_queryset().filter(status="Visa Pending").count()
-        response.data['visa_granted'] = visa_granted
-        response.data['offer_pending'] = offer_pending
-        response.data['visa_pending'] = visa_pending
-        return response
+class DashboardStatAPIView(viewsets.ViewSet):
+    permission_classes = (IsAuthenticated,)
+
+    def list(self):
+        queryset = Student.objects.all()
+        total_student = queryset.count()
+        visa_granted = queryset.filter(status="Visa Granted").count()
+        offer_pending = queryset.filter(status="Offer Pending").count()
+        visa_pending = queryset.filter(status="Visa Pending").count()
+        return Response({
+            'total_student':total_student,
+            'visa_granted':visa_granted,
+            'offer_pending':offer_pending,
+            'visa_pending':visa_pending,
+            })

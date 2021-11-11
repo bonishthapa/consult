@@ -48,3 +48,4 @@ class StudentSerializer(serializers.ModelSerializer):
             "application_screenshot",
             "other",
         ]
+
