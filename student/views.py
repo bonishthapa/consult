@@ -49,7 +49,7 @@ class StudentAPIView(viewsets.ModelViewSet):
 class DashboardStatAPIView(viewsets.ViewSet):
     permission_classes = (IsAuthenticated,)
 
-    def list(self):
+    def list(self,*args, **kwargs):
         queryset = Student.objects.all()
         total_student = queryset.count()
         visa_granted = queryset.filter(status="Visa Granted").count()
