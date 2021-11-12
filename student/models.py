@@ -1,6 +1,7 @@
 import os
 from django.db import models
 from django.dispatch import receiver
+import datetime
 
 # Create your models here.
 GENDER_CHOICES=[
@@ -37,7 +38,7 @@ class Student(models.Model):
     email = models.EmailField(blank=False)
     password = models.CharField(max_length=100, blank=False)
     phone = models.CharField(max_length=20, blank=True)
-    dob = models.DateField(blank=True)
+    dob = models.DateField(blank=True, default=datetime.date.today)
     address = models.CharField(max_length=200, blank=True)
     gender = models.CharField(max_length=200, choices=GENDER_CHOICES, blank=True)
     academic = models.CharField(max_length=200, blank=True)
