@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from student.models import Student
+from django.conf import settings
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -14,6 +15,11 @@ class StudentSerializer(serializers.ModelSerializer):
     visa = serializers.FileField(max_length=None, required=False)
     application_screenshot = serializers.FileField(max_length=None, required=False)
     other = serializers.FileField(max_length=None, required=False)
+    profile_picture_url = serializers.SerializerMethodField()
+
+    def get_profile_picture_url(self, obj):
+        request = self.context['request']
+        return request.build_absolute_uri(settings.MEDIA_URL + obj['profile_image'])
 
     class Meta:
         model = Student
@@ -21,6 +27,7 @@ class StudentSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "profile_image",
+            "profile_picture_url",
             "email",
             "password",
             "phone",
