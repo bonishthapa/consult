@@ -15,11 +15,9 @@ class StudentSerializer(serializers.ModelSerializer):
     visa = serializers.FileField(max_length=None, required=False)
     application_screenshot = serializers.FileField(max_length=None, required=False)
     other = serializers.FileField(max_length=None, required=False)
-    # profile_picture_url = serializers.SerializerMethodField()
-
-    # def get_profile_picture_url(self, obj):
-    #     request = self.context['request']
-    #     return request.build_absolute_uri(settings.MEDIA_URL + obj['profile_image'])
+    payment_receipt = serializers.FileField(max_length=None, required=False)
+    application_form = serializers.FileField(max_length=None, required=False)
+    citizenship = serializers.FileField(max_length=None, required=False)
 
     class Meta:
         model = Student
@@ -27,10 +25,10 @@ class StudentSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "profile_image",
-            # "profile_picture_url",
             "email",
             "password",
             "phone",
+            "dob",
             "address",
             "gender",
             "academic",
@@ -54,5 +52,9 @@ class StudentSerializer(serializers.ModelSerializer):
             "visa",
             "application_screenshot",
             "other",
+            "payment_receipt",
+            "application_form",
+            "citizenship"
         ]
+        read_only_fields=['created_at','updated_at']
 

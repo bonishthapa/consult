@@ -55,9 +55,13 @@ class DashboardStatAPIView(viewsets.ViewSet):
         visa_granted = queryset.filter(status="Visa Granted").count()
         offer_pending = queryset.filter(status="Offer Pending").count()
         visa_pending = queryset.filter(status="Visa Pending").count()
+        interview = queryset.filter(status="Interview").count()
+        cas_pending = queryset.filter(status="CAS Requested").count()
         return Response({
             'total_student':total_student,
             'visa_granted':visa_granted,
             'offer_pending':offer_pending,
             'visa_pending':visa_pending,
+            'interview':interview,
+            'cas_pending':cas_pending,
             })
