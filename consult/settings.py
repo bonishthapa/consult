@@ -93,29 +93,29 @@ WSGI_APPLICATION = 'consult.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-import dj_database_url
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ddprj1ksk669i8',
-        'USER': 'xoxubclaiunohr',
-        'PASSWORD': 'af4262f82d534d3d8d7011bdd147a6d1dfc6418b99110f0e3f7d954ad34c89ab',
-        'HOST': 'ec2-18-232-216-229.compute-1.amazonaws.com',
-        'PORT': '5432',
-
-    }
-}
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
+# import dj_database_url
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'ddprj1ksk669i8',
+#         'USER': 'xoxubclaiunohr',
+#         'PASSWORD': 'af4262f82d534d3d8d7011bdd147a6d1dfc6418b99110f0e3f7d954ad34c89ab',
+#         'HOST': 'ec2-18-232-216-229.compute-1.amazonaws.com',
+#         'PORT': '5432',
+
 #     }
 # }
+
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -160,8 +160,9 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 
 
 AUTH_USER_MODEL = 'user.User'
