@@ -1,7 +1,6 @@
 import os
 from django.db import models
 from django.dispatch import receiver
-import datetime
 
 # Create your models here.
 GENDER_CHOICES=[
@@ -38,7 +37,7 @@ class Student(models.Model):
     email = models.EmailField(blank=False)
     password = models.CharField(max_length=100, blank=False)
     phone = models.CharField(max_length=20, blank=True)
-    # dob = models.DateField(blank=True, default=datetime.date.today)
+    dob = models.DateField(blank=True)
     address = models.CharField(max_length=200, blank=True)
     gender = models.CharField(max_length=200, choices=GENDER_CHOICES, blank=True)
     academic = models.CharField(max_length=200, blank=True)
@@ -65,15 +64,15 @@ class Student(models.Model):
     payment_receipt = models.FileField(upload_to='documents', blank=True)
     application_form = models.FileField(upload_to='documents', blank=True)
     citizenship = models.FileField(upload_to='documents', blank=True)
-    # created_at = models.DateTimeField(auto_now_add=True, blank=True)
-    # updated_at = models.DateTimeField(auto_now=True,blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
 
     def __str__(self):
         return self.name
 
-    # class Meta:
-    #     ordering = ['-created_at']    
+    class Meta:
+        ordering = ['-created_at']    
 
 @receiver(models.signals.post_delete, sender=Student)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
