@@ -72,8 +72,8 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
-        ordering = ['-created_at']    
+    # class Meta:
+    #     ordering = ['-created_at']    
 
 @receiver(models.signals.post_delete, sender=Student)
 def auto_delete_file_on_delete(sender, instance, **kwargs):
