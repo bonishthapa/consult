@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from student.models import Student
-from django.conf import settings
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -25,6 +24,7 @@ class StudentSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "profile_image",
+            "actual_email",
             "email",
             "password",
             "phone",

@@ -34,10 +34,11 @@ STATUS_CHOICES=[
 class Student(models.Model):
     name = models.CharField(max_length=100, blank=False)
     profile_image = models.ImageField(upload_to='profile_images', blank=True)
-    email = models.EmailField(blank=False)
+    actual_email = models.EmailField(blank=False)
+    email = models.EmailField(blank=True)
     password = models.CharField(max_length=100, blank=False)
     phone = models.CharField(max_length=20, blank=True)
-    dob = models.DateField(blank=True)
+    dob = models.DateField(blank=True,null=True)
     address = models.CharField(max_length=200, blank=True)
     gender = models.CharField(max_length=200, choices=GENDER_CHOICES, blank=True)
     academic = models.CharField(max_length=200, blank=True)
