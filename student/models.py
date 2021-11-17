@@ -34,7 +34,7 @@ STATUS_CHOICES=[
 class Student(models.Model):
     name = models.CharField(max_length=100, blank=True)
     profile_image = models.ImageField(upload_to='profile_images', blank=True)
-    actual_email = models.EmailField(blank=False)
+    actual_email = models.EmailField(blank=True, null=True)
     email = models.EmailField(blank=True)
     password = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=20, blank=True)
