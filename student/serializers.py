@@ -56,5 +56,5 @@ class StudentSerializer(serializers.ModelSerializer):
             "application_form",
             "citizenship"
         ]
-        read_only_fields=['created_at','updated_at']
+        # read_only_fields=['created_at','updated_at']
 

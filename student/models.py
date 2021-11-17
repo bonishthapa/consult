@@ -32,11 +32,11 @@ STATUS_CHOICES=[
 
 
 class Student(models.Model):
-    name = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=100, blank=False)
     profile_image = models.ImageField(upload_to='profile_images', blank=True)
-    actual_email = models.EmailField(blank=True, null=True)
+    actual_email = models.EmailField(blank=False)
     email = models.EmailField(blank=True)
-    password = models.CharField(max_length=100, blank=True)
+    password = models.CharField(max_length=100, blank=False)
     phone = models.CharField(max_length=20, blank=True)
     dob = models.DateField(blank=True,null=True)
     address = models.CharField(max_length=200, blank=True)
@@ -65,15 +65,15 @@ class Student(models.Model):
     payment_receipt = models.FileField(upload_to='documents', blank=True)
     application_form = models.FileField(upload_to='documents', blank=True)
     citizenship = models.FileField(upload_to='documents', blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    # created_at = models.DateTimeField(auto_now_add=True)
+    # updated_at = models.DateTimeField(auto_now=True)
     
 
     def __str__(self):
         return self.name
 
     class Meta:
-        ordering = ['-created_at']    
+        # ordering = ['-created_at']    
 
 @receiver(models.signals.post_delete, sender=Student)
 def auto_delete_file_on_delete(sender, instance, **kwargs):

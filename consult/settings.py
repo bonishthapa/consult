@@ -98,10 +98,10 @@ import dj_database_url
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1drvvdn8n26nc',
-        'USER': 'dgfjgzxqytyqij',
-        'PASSWORD': 'ab5135a18e9bb702750fd989a01c1a23de7494783e2919f642bbdbc053e56b34',
-        'HOST': 'ec2-54-159-175-113.compute-1.amazonaws.com',
+        'NAME': 'ddprj1ksk669i8',
+        'USER': 'xoxubclaiunohr',
+        'PASSWORD': 'af4262f82d534d3d8d7011bdd147a6d1dfc6418b99110f0e3f7d954ad34c89ab',
+        'HOST': 'ec2-18-232-216-229.compute-1.amazonaws.com',
         'PORT': '5432',
 
     }
