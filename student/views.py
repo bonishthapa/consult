@@ -46,22 +46,22 @@ class StudentAPIView(viewsets.ModelViewSet):
     #     response.data['visa_pending'] = visa_pending
     #     return response
 
-class DashboardStatAPIView(viewsets.ViewSet):
-    permission_classes = (IsAuthenticated,)
+# class DashboardStatAPIView(viewsets.ViewSet):
+#     permission_classes = (IsAuthenticated,)
 
-    def list(self,*args, **kwargs):
-        queryset = Student.objects.all()
-        total_student = queryset.count()
-        visa_granted = queryset.filter(status="Visa Granted").count()
-        offer_pending = queryset.filter(status="Offer Pending").count()
-        visa_pending = queryset.filter(status="Visa Pending").count()
-        interview = queryset.filter(status="Interview").count()
-        cas_pending = queryset.filter(status="CAS Requested").count()
-        return Response({
-            'total_student':total_student,
-            'visa_granted':visa_granted,
-            'offer_pending':offer_pending,
-            'visa_pending':visa_pending,
-            'interview':interview,
-            'cas_pending':cas_pending,
-            })
+#     def list(self,*args, **kwargs):
+#         queryset = Student.objects.all()
+#         total_student = queryset.count()
+#         visa_granted = queryset.filter(status="Visa Granted").count()
+#         offer_pending = queryset.filter(status="Offer Pending").count()
+#         visa_pending = queryset.filter(status="Visa Pending").count()
+#         interview = queryset.filter(status="Interview").count()
+#         cas_pending = queryset.filter(status="CAS Requested").count()
+#         return Response({
+#             'total_student':total_student,
+#             'visa_granted':visa_granted,
+#             'offer_pending':offer_pending,
+#             'visa_pending':visa_pending,
+#             'interview':interview,
+#             'cas_pending':cas_pending,
+#             })
