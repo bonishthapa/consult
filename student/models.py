@@ -72,7 +72,7 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
+    # class Meta:
         # ordering = ['-created_at']    
 
 @receiver(models.signals.post_delete, sender=Student)
