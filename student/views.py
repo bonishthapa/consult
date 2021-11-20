@@ -14,7 +14,7 @@ from student.paginations import StudentPaginaition
 
 class StudentAPIView(viewsets.ModelViewSet):
     queryset = Student.objects.all()
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     serializer_class = StudentSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
