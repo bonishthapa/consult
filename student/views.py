@@ -65,3 +65,4 @@ class DashboardStatAPIView(viewsets.ViewSet):
             'interview':interview,
             'cas_pending':cas_pending,
             })
+
