@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +25,7 @@ SECRET_KEY = 'django-insecure-12qjxh(-5#i#0&k7_^@666=jzaq$-8e6gt9j+zi1$(=u*&y6r*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.10.72','127.0.0.1','uniladder-consult.herokuapp.com']
+ALLOWED_HOSTS = ['161.35.38.151']
 
 APPEND_SLASH=False
 
@@ -49,7 +48,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -98,10 +96,10 @@ import dj_database_url
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ddprj1ksk669i8',
-        'USER': 'xoxubclaiunohr',
-        'PASSWORD': 'af4262f82d534d3d8d7011bdd147a6d1dfc6418b99110f0e3f7d954ad34c89ab',
-        'HOST': 'ec2-18-232-216-229.compute-1.amazonaws.com',
+        'NAME': 'uniladder',
+        'USER': 'admin',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
 
     }
@@ -158,7 +156,6 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 STATIC_URL = '/staticfiles/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
