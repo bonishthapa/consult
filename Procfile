@@ -1,1 +1,0 @@
-web: gunicorn consult.wsgi --log-file -

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-12qjxh(-5#i#0&k7_^@666=jzaq$-8e6gt9j+zi1$(=u*&y6r*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['161.35.38.151']
+ALLOWED_HOSTS = ['159.65.23.35','localhost']
 
 APPEND_SLASH=False
 
@@ -91,29 +91,31 @@ WSGI_APPLICATION = 'consult.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-import dj_database_url
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'uniladder',
-        'USER': 'admin',
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-
-    }
-}
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
+# import dj_database_url
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'uniladder',
+#         'USER': 'admin',
+#         'PASSWORD': 'password',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+
 #     }
 # }
+
+
+
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
