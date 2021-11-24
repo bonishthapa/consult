@@ -14,13 +14,13 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email','first_name','username','password','is_active','is_staff','role']
+        fields = ['id','email','first_name','username','password','is_active','is_staff','role']
 
 class CurrentUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username','email','first_name','last_name','is_active','role']        
+        fields = ['id','username','email','first_name','last_name','is_active','role']        
 
 
 # class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
