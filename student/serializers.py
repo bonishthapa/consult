@@ -42,6 +42,7 @@ class StudentSerializer(serializers.ModelSerializer):
             "amount_paid",
             "passport_number",
             "recommendation",
+            "remarks",
             "passport",
             "academic_transcript",
             "ielts",
