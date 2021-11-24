@@ -4,27 +4,27 @@ from django.dispatch import receiver
 
 # Create your models here.
 GENDER_CHOICES=[
-    ('male','Male'),
-    ('female','Female'),
-    ('other','Other'),
+    ('Male','Male'),
+    ('Female','Female'),
+    ('Other','Other'),
 ]
 LEVEL_CHOICES=[
-    ('undergraduate','Undergraduate'),
-    ('postgraduate','Postgraduate'),
-    ('phd','Phd'),
+    ('Undergraduate','Undergraduate'),
+    ('Postgraduate','Postgraduate'),
+    ('Phd','Phd'),
 ]
 STATUS_CHOICES=[
-    ('file_submitted','File Submitted'),
-    ('conditional_offer','Conditional Offer'),
-    ('unconditional_offer','Unconditional Offer'),
-    ('offer_rejected','Offer rejected'),
-    ('deposit_paid','Deposit Paid'),
-    ('interview','Interview'),
-    ('cas_requested','CAS Requested'),
-    ('cas_issued','CAS Issued'),
-    ('vfs_appointment','VFS Appointment'),
-    ('visa_granted','Visa Granted'),
-    ('visa_rejected','Visa Rejected'),
+    ('File Submitted','File Submitted'),
+    ('Conditional Offer','Conditional Offer'),
+    ('Unconditional Offer','Unconditional Offer'),
+    ('Offer rejected','Offer rejected'),
+    ('Deposit Paid','Deposit Paid'),
+    ('Interview','Interview'),
+    ('CAS Requested','CAS Requested'),
+    ('CAS Issued','CAS Issued'),
+    ('VFS Appointment','VFS Appointment'),
+    ('Visa Granted','Visa Granted'),
+    ('Visa Rejected','Visa Rejected'),
 ]
 
 # def filefolder_path(instance, filename):
