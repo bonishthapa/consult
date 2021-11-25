@@ -14,7 +14,8 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id','email','first_name','username','password','is_active','is_staff','role']
+        fields = ['id','email','first_name','username','password','role']
+        read_only_fields=['is_active','is_staff']
 
 class CurrentUserSerializer(serializers.ModelSerializer):
 
@@ -54,3 +55,8 @@ class LogoutSerializer(serializers.Serializer):
 
         except TokenError:
             self.fail('bad_token')        
+
+
+class ChangeUserPassword(serializers.Serializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)

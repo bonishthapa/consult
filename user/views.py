@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from user import serializers
 from user.models import User
-from user.serializers import CurrentUserSerializer, LogoutSerializer, UserSerializer
+from user.serializers import ChangeUserPassword, CurrentUserSerializer, LogoutSerializer, UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import viewsets
 from django.conf import settings
@@ -57,4 +57,28 @@ class LogoutAPIView(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response(status=status.HTTP_204_NO_CONTENT)        
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class ChangePassword(generics.UpdateAPIView):
+    serializer_class = ChangeUserPassword
+    model = User
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self, query=None):
+        obj = self.request.user
+        return obj
+
+    def update(self, request, *args, **kwargs):
+            self.object = self.get_object()
+            serializer = self.get_serializer(data=request.data)
+
+            if serializer.is_valid():
+                # Check old password
+                if not self.object.check_password(serializer.data.get("old_password")):
+                    return Response({"old_password": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
+                # set_password also hashes the password that the user will get
+                self.object.set_password(serializer.data.get("new_password"))
+                self.object.save()
+                return Response("Success.", status=status.HTTP_200_OK)
+
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)     

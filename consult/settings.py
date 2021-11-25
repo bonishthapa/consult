@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-12qjxh(-5#i#0&k7_^@666=jzaq$-8e6gt9j+zi1$(=u*&y6r*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['159.65.23.35','localhost']
+ALLOWED_HOSTS = ['159.65.23.35','localhost','127.0.0.1']
 
 APPEND_SLASH=False
 
@@ -61,9 +61,11 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {  
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'user.backends.JWTAuthentication',
-    )
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 
 }
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -176,8 +178,8 @@ from datetime import timedelta
 from django.conf import settings
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=20),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': False,
@@ -199,6 +201,6 @@ SIMPLE_JWT = {
     'JTI_CLAIM': 'jti',
 
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
-    'SLIDING_TOKEN_LIFETIME': timedelta(days=20),
-    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=30),
+    'SLIDING_TOKEN_LIFETIME': timedelta(days=30),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }

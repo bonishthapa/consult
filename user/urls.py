@@ -20,5 +20,6 @@ urlpatterns = [
     path('api/logout/', views.LogoutAPIView.as_view(),name="logout"),
     # path('api/login/', views.ObtainTokenPairWithUsernameView.as_view(), name='login'),
     path('api/user/details/', views.UserDetails.as_view(), name='userdetails'),
+    path('api/user/changepassword/', views.ChangePassword.as_view(), name='passwordchange'),
     path('api/',include(router.urls)),
 ]
