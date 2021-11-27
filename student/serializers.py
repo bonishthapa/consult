@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from student.models import Student
+from user.serializers import UserSerializer
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -17,6 +18,8 @@ class StudentSerializer(serializers.ModelSerializer):
     payment_receipt = serializers.FileField(max_length=None, required=False)
     application_form = serializers.FileField(max_length=None, required=False)
     citizenship = serializers.FileField(max_length=None, required=False)
+    created_by = UserSerializer()
+    updated_by = UserSerializer()
 
     class Meta:
         model = Student
@@ -55,7 +58,9 @@ class StudentSerializer(serializers.ModelSerializer):
             "other",
             "payment_receipt",
             "application_form",
-            "citizenship"
+            "citizenship",
+            "created_by",
+            "updated_by"
         ]
-        read_only_fields=['created_at','updated_at']
+        read_only_fields=['created_at','updated_at''created_by','updated_by']
 

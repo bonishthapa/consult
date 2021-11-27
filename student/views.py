@@ -7,6 +7,7 @@ from student.serializers import StudentSerializer
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from rest_framework import status, generics
 from rest_framework.response import Response
+from rest_framework import response
 from rest_framework import filters
 from student.paginations import StudentPaginaition
 
@@ -34,6 +35,25 @@ class StudentAPIView(viewsets.ModelViewSet):
             queryset = queryset.filter(status=status)    
 
         return queryset
+
+    def create(self, request, **kwargs):
+        if self.request.user.is_active:
+            serializer = StudentSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save(created_by=request.user)
+                return Response(serializer.data, status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors)
+             
+
+    def update(self, request, **kwargs):
+        if self.request.user.is_active:
+            partial = kwargs.pop('partial', False)
+            instance = self.get_object()
+            serializer = StudentSerializer(instance, data=request.data, partial=partial)
+            if serializer.is_valid():
+                serializer.save(updated_by=request.user)
+                return Response(serializer.data, status.HTTP_201_CREATED)    
 
     #Add extra context in response
     # def list(self, request, *args, **kwargs):

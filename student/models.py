@@ -1,6 +1,8 @@
 import os
 from django.db import models
 from django.dispatch import receiver
+from user.models import User
+
 
 # Create your models here.
 GENDER_CHOICES=[
@@ -68,6 +70,8 @@ class Student(models.Model):
     citizenship = models.FileField(upload_to='documents', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE,related_name='created_by')
+    updated_by = models.ForeignKey(User, on_delete=models.CASCADE,related_name='updated_by',blank=True,null=True)
     
 
     def __str__(self):
