@@ -3,7 +3,27 @@ from student.models import Student
 from user.serializers import UserSerializer
 
 
+class ChoiceField(serializers.ChoiceField):
+
+    def to_representation(self, obj):
+        if obj == '' and self.allow_blank:
+            return obj
+        return self._choices[obj]
+
+    def to_internal_value(self, data):
+        # To support inserts with the value
+        if data == '' and self.allow_blank:
+            return ''
+
+        for key, val in self._choices.items():
+            if val == data:
+                return key
+        self.fail('invalid_choice', input=data)
+        
 class StudentSerializer(serializers.ModelSerializer):
+    gender = ChoiceField(choices=Student.GENDER_CHOICES)
+    level = ChoiceField(choices=Student.LEVEL_CHOICES)
+    status = ChoiceField(choices=Student.STATUS_CHOICES)
     profile_image = serializers.ImageField(required=False)
     passport = serializers.FileField(max_length=None, required=False)
     academic_transcript = serializers.FileField(max_length=None, required=False)
