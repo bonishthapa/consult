@@ -143,4 +143,145 @@ def auto_delete_file_on_change(sender, instance, **kwargs):
     with new file.
     """
     if not instance.pk:
-        return False    
+        return False
+
+    # try:
+    #     old_profile_image = Student.objects.get(pk=instance.pk).profile_image
+    # except Student.DoesNotExist:
+    #     return False
+
+    # try:        
+    #     old_passport = Student.objects.get(pk=instance.pk).passport
+    # except Student.DoesNotExist:
+    #     return False
+
+    # try:        
+    #     old_academic_transcript = Student.objects.get(pk=instance.pk).academic_transcript
+    # except Student.DoesNotExist:
+    #     return False    
+        
+    # try:    
+    #     old_ielts = Student.objects.get(pk=instance.pk).ielts
+    # except Student.DoesNotExist:
+    #     return False    
+        
+    # try:    
+    #     old_sop = Student.objects.get(pk=instance.pk).sop
+    # except Student.DoesNotExist:
+    #     return False    
+        
+    # try:    
+    #     old_cv = Student.objects.get(pk=instance.pk).cv
+    # except Student.DoesNotExist:
+    #     return False    
+        
+    # try:    
+    #     old_reference = Student.objects.get(pk=instance.pk).reference
+    # except Student.DoesNotExist:
+    #     return False    
+
+    # try:    
+    #     old_work_experience = Student.objects.get(pk=instance.pk).work_experience
+    # except Student.DoesNotExist:
+    #     return False    
+
+    # try:    
+    #     old_visa = Student.objects.get(pk=instance.pk).visa
+    # except Student.DoesNotExist:
+    #     return False    
+
+    # try:    
+    #     old_application_screenshot = Student.objects.get(pk=instance.pk).application_screenshot
+    # except Student.DoesNotExist:
+    #     return False    
+
+    # try:    
+    #     old_other = Student.objects.get(pk=instance.pk).other
+    # except Student.DoesNotExist:
+    #     return False    
+
+    # try:    
+    #     old_payment_receipt = Student.objects.get(pk=instance.pk).payment_receipt
+    # except Student.DoesNotExist:
+    #     return False    
+
+    # try:    
+    #     old_application_form = Student.objects.get(pk=instance.pk).application_form
+    # except Student.DoesNotExist:
+    #     return False    
+
+    # try:    
+    #     old_citizenship = Student.objects.get(pk=instance.pk).citizenship
+    # except Student.DoesNotExist:
+    #     return False
+
+    # new_profile_image = instance.profile_image
+    # new_passport = instance.passport
+    # new_academic_transcript = instance.academic_transcript
+    # new_ielts = instance.ielts
+    # new_sop = instance.sop
+    # new_cv = instance.cv
+    # new_reference = instance.reference
+    # new_work_experience = instance.work_experience
+    # new_visa = instance.visa
+    # new_application_screenshot = instance.application_screenshot
+    # new_other = instance.other
+    # new_payment_receipt = instance.payment_receipt
+    # new_application_form = instance.application_form
+    # new_citizenship = instance.citizenship
+
+    # if not old_profile_image == new_profile_image:
+    #     if os.path.exists(old_profile_image.path):
+    #         os.remove(old_profile_image.path)
+
+    # if not old_passport == new_passport:
+    #     if os.path.isfile(old_passport.path):
+    #         os.remove(old_passport.path)
+
+    # if not old_academic_transcript == new_academic_transcript:
+    #     if os.path.isfile(old_academic_transcript.path):
+    #         os.remove(old_academic_transcript.path)
+
+    # if not old_ielts == new_ielts:
+    #     if os.path.isfile(old_ielts.path):
+    #         os.remove(old_ielts.path)
+
+    # if not old_sop == new_sop:
+    #     if os.path.isfile(old_sop.path):
+    #         os.remove(old_sop.path)
+
+    # if not old_cv == new_cv:
+    #     if os.path.isfile(old_cv.path):
+    #         os.remove(old_cv.path)
+
+    # if not old_reference == new_reference:
+    #     if os.path.isfile(old_reference.path):
+    #         os.remove(old_reference.path)
+
+    # if not old_work_experience == new_work_experience:
+    #     if os.path.isfile(old_work_experience.path):
+    #         os.remove(old_work_experience.path)                                                        
+
+    # if not old_visa == new_visa:
+    #     if os.path.isfile(old_visa.path):
+    #         os.remove(old_visa.path)
+
+    # if not old_application_screenshot == new_application_screenshot:
+    #     if os.path.isfile(old_application_screenshot.path):
+    #         os.remove(old_application_screenshot.path)
+
+    # if not old_other == new_other:
+    #     if os.path.isfile(old_other.path):
+    #         os.remove(old_other.path)
+
+    # if not old_payment_receipt == new_payment_receipt:
+    #     if os.path.isfile(old_payment_receipt.path):
+    #         os.remove(old_payment_receipt.path)
+
+    # if not old_application_form == new_application_form:
+    #     if os.path.isfile(old_application_form.path):
+    #         os.remove(old_application_form.path)
+
+    # if not old_citizenship == new_citizenship:
+    #     if os.path.isfile(old_citizenship.path):
+    #         os.remove(old_citizenship.path)                                                

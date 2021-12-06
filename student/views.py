@@ -53,7 +53,9 @@ class StudentAPIView(viewsets.ModelViewSet):
             serializer = StudentSerializer(instance, data=request.data, partial=partial)
             if serializer.is_valid():
                 serializer.save(updated_by=request.user)
-                return Response(serializer.data, status.HTTP_201_CREATED)    
+                return Response(serializer.data, status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors)    
 
     #Add extra context in response
     # def list(self, request, *args, **kwargs):
@@ -72,11 +74,11 @@ class DashboardStatAPIView(viewsets.ViewSet):
     def list(self,*args, **kwargs):
         queryset = Student.objects.all()
         total_student = queryset.count()
-        visa_granted = queryset.filter(status="Visa Granted").count()
-        offer_pending = queryset.filter(status="Offer Pending").count()
-        visa_pending = queryset.filter(status="Visa Pending").count()
-        interview = queryset.filter(status="Interview").count()
-        cas_pending = queryset.filter(status="CAS Requested").count()
+        visa_granted = queryset.filter(status="visa_granted").count()
+        offer_pending = queryset.filter(status="offer_pending").count()
+        visa_pending = queryset.filter(status="visa_pending").count()
+        interview = queryset.filter(status="interview").count()
+        cas_pending = queryset.filter(status="cas_pending").count()
         return Response({
             'total_student':total_student,
             'visa_granted':visa_granted,

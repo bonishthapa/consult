@@ -16,14 +16,17 @@ class ChoiceField(serializers.ChoiceField):
             return ''
 
         for key, val in self._choices.items():
+            print("key",key)
+            print("data",data)
             if val == data:
+                print("val",val)
                 return key
         self.fail('invalid_choice', input=data)
         
 class StudentSerializer(serializers.ModelSerializer):
-    gender = ChoiceField(choices=Student.GENDER_CHOICES)
-    level = ChoiceField(choices=Student.LEVEL_CHOICES)
-    status = ChoiceField(choices=Student.STATUS_CHOICES)
+    gender = ChoiceField(choices=Student.GENDER_CHOICES, required=False)
+    level = ChoiceField(choices=Student.LEVEL_CHOICES, required=False)
+    status = ChoiceField(choices=Student.STATUS_CHOICES, required=False)
     profile_image = serializers.ImageField(required=False)
     passport = serializers.FileField(max_length=None, required=False)
     academic_transcript = serializers.FileField(max_length=None, required=False)
@@ -38,8 +41,8 @@ class StudentSerializer(serializers.ModelSerializer):
     payment_receipt = serializers.FileField(max_length=None, required=False)
     application_form = serializers.FileField(max_length=None, required=False)
     citizenship = serializers.FileField(max_length=None, required=False)
-    created_by = UserSerializer()
-    updated_by = UserSerializer()
+    created_by = UserSerializer(required=False)
+    updated_by = UserSerializer(required=False)
 
     class Meta:
         model = Student
